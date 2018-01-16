@@ -5,12 +5,14 @@
  */
 package studio.bobbyfeng;
 
+import java.lang.invoke.LambdaConversionException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.jar.Attributes.Name;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -124,6 +126,16 @@ public class Main {
 		// Lambda Challenge No. 7
 		String supplierResult = iLoveJava.get();
 		System.out.println(supplierResult);
+
+		// Lambda Challenge No.9
+		List<String> topNames2015 = Arrays.asList("Amelia", "Olivia", "emily", "Isla", "Ava", "oliver", "Jack",
+				"Charlie", "harry", "Jacob");
+
+		List<String> firstUpperCaseList = new ArrayList<>();
+		topNames2015.forEach(name -> firstUpperCaseList.add(name.substring(0, 1).toUpperCase() + name.substring(1)));
+		firstUpperCaseList.sort((s1, s2) -> s1.compareTo(s2));
+		firstUpperCaseList.forEach(s-> System.out.println(s));
+
 	}
 
 	// Lambda Challenge No. 4
