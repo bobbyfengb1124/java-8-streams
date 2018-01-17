@@ -134,8 +134,39 @@ public class Main {
 		List<String> firstUpperCaseList = new ArrayList<>();
 		topNames2015.forEach(name -> firstUpperCaseList.add(name.substring(0, 1).toUpperCase() + name.substring(1)));
 		firstUpperCaseList.sort((s1, s2) -> s1.compareTo(s2));
-		firstUpperCaseList.forEach(s-> System.out.println(s));
+		firstUpperCaseList.forEach(s -> System.out.println(s));
 
+		// Lambda Challenge No.10
+		firstUpperCaseList.sort(String::compareTo);
+		firstUpperCaseList.forEach(System.out::println);
+
+		// Lambda Challenge No.11
+		firstUpperCaseList
+		.stream()
+		.map(name -> name.substring(0, 1).toUpperCase() + name.substring(2))
+		.sorted(String::compareTo)
+		.forEach(System.out::println);
+		
+		// Lambda Challenge No.12
+		long namesBeginningWithA = topNames2015
+				.stream()
+				.map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+				.filter(name -> name.startsWith("A"))
+				.count();
+		System.out.println("Number of names beginning with A is: " + namesBeginningWithA);
+		
+		// Lambda Challenge No.13
+		topNames2015.stream()
+			.map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+			.peek(System.out::println)
+			.sorted(String::compareTo);
+		
+		// Lambda Challenge No.14
+		topNames2015.stream()
+			.map(name -> name.substring(0, 1).toUpperCase() + name.substring(1))
+			.peek(System.out::println)
+			.sorted(String::compareTo)
+			.collect(Collectors.toList());
 	}
 
 	// Lambda Challenge No. 4
